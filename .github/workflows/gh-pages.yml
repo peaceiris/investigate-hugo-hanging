@@ -27,13 +27,17 @@ jobs:
           cp themes/yuripages/layouts/index.html layouts/section/blocklist.html.html
           cp content/index.html layouts/index.html
 
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+      - name: Reset mtime
+        uses: actions/setup-python@v2
         with:
-          hugo-version: '0.80.0'
+          python-version: '3.8.6'
+      - run: python3 git_reset_mtime.py
 
-      - name: Build
-        run: hugo --minify
+      - name: Hugo
+        uses: klakegg/actions-hugo@1.0.0
+        with:
+          version: '0.80.0'
+          image: 'busybox'
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
