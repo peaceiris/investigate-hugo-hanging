@@ -20,7 +20,7 @@ jobs:
           repository: Yrr0r/yuripages
           path: themes/yuripages
 
-      - name: patch html
+      - name: Patch html
         run: |
           mkdir -p layouts/section
           cp themes/yuripages/layouts/index.html layouts/section/blocklist.html.html
@@ -29,7 +29,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.79.1'
+          hugo-version: '0.80.0'
 
       - name: Build
         run: hugo --minify
