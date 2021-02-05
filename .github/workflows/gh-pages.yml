@@ -39,7 +39,7 @@ jobs:
         with:
           hugo-version: '0.80.0'
 
-      - run: hugo --minify --debug --path-warnings --templateMetrics --templateMetricsHints --verboseLog
+      - run: hugo --minify --debug --path-warnings --verboseLog
 
 #       - name: Deploy
 #         uses: peaceiris/actions-gh-pages@v3
