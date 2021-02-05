@@ -7,13 +7,13 @@ on:
 
 jobs:
   deploy:
-    timeout-minutes: 10
+    timeout-minutes: 5
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout amaki-aria.github.io
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+          fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
 
       - name: Checkout yuripages
         uses: actions/checkout@v2
@@ -33,14 +33,22 @@ jobs:
           python-version: '3.8.6'
       - run: python3 git_reset_mtime.py
 
-      - name: Hugo
-        uses: klakegg/actions-hugo@1.0.0
-        with:
-          version: '0.80.0'
-          image: 'busybox'
+#       - name: Hugo
+#         uses: klakegg/actions-hugo@1.0.0
+#         with:
+#           version: '0.80.0'
+#           image: 'busybox'
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          hugo-version: '0.80.0'
+          # extended: true
+
+      - run: hugo --minify
+
+#       - name: Deploy
+#         uses: peaceiris/actions-gh-pages@v3
+#         with:
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
+#           publish_dir: ./public
