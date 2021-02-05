@@ -19,6 +19,7 @@ jobs:
       - name: Checkout yuripages
         uses: actions/checkout@v2
         with:
+          fetch-depth: 1
           repository: Yrr0r/yuripages
           path: themes/yuripages
 
