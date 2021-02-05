@@ -39,7 +39,7 @@ jobs:
         with:
           hugo-version: '0.80.0'
 
-      - name: Build 5
+      - name: Build 1
         run: hugo --minify --debug --path-warnings --verboseLog
 
 #       - name: Deploy
